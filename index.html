@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en" data-theme="obsidian-arc">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0a0d10" />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+    <meta name="jarvis-build" content="full-command-bridge-2026-10-23" />
+    <meta
+      name="description"
+      content="A luxury procedural command bridge inspired by cinematic mission control interfaces."
+    />
+    <title>JARVIS / Command Bridge</title>
+    <link rel="stylesheet" href="./src/styles.css?v=20261023-full" />
+    <script type="module" src="./src/main.js?v=20261023-full"></script>
+  </head>
+  <body>
+    <div id="app">
+      <main id="command-bridge" class="app-shell" aria-labelledby="app-title">
+        <div class="ambient-field" aria-hidden="true"></div>
+        <h1 id="app-title" class="sr-only">JARVIS command bridge</h1>
+
+        <header class="topbar">
+          <a class="brand-lockup" href="#command-bridge" aria-label="JARVIS command bridge home">
+            <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="brand-copy"><strong>JARVIS</strong><small>Command bridge / 07</small></span>
+          </a>
+          <div class="topbar-center" aria-live="polite">
+            <span class="status-orb" aria-hidden="true"></span>
+            <span data-signal-label>Synchronizing surface</span>
+            <span class="topbar-divider" aria-hidden="true"></span>
+            <span class="topbar-code" data-coordinate>00° 00′ 00″</span>
+          </div>
+          <div class="topbar-actions">
+            <span class="micro-label">Surface tone</span>
+            <div class="theme-switcher" role="group" aria-label="Surface theme">
+              <button type="button" class="theme-swatch is-active" data-theme-id="obsidian-arc" aria-label="Use Obsidian Arc theme" aria-pressed="true"><span style="--swatch:#8ef4ff"></span></button>
+              <button type="button" class="theme-swatch" data-theme-id="pearl-alloy" aria-label="Use Pearl Alloy theme" aria-pressed="false"><span style="--swatch:#157f8b"></span></button>
+              <button type="button" class="theme-swatch" data-theme-id="cobalt-night" aria-label="Use Cobalt Night theme" aria-pressed="false"><span style="--swatch:#6ea8ff"></span></button>
+              <button type="button" class="theme-swatch" data-theme-id="ember-copper" aria-label="Use Ember Copper theme" aria-pressed="false"><span style="--swatch:#f0a46d"></span></button>
+            </div>
+          </div>
+        </header>
+
+        <div class="bridge-grid">
+          <aside class="module-rail" aria-label="Bridge modules">
+            <div class="rail-heading">
+              <span class="eyebrow">Subsystem index</span>
+              <span class="rail-count">04 / 04</span>
+            </div>
+            <nav class="module-list" aria-label="Select bridge module">
+              <button type="button" class="module-button is-active" data-module-id="core" aria-pressed="true">
+                <span class="module-index">01</span>
+                <span class="module-copy"><strong>Core</strong><small>Aperture control</small></span>
+                <span class="module-health">98</span>
+              </button>
+              <button type="button" class="module-button" data-module-id="sentinel" aria-pressed="false">
+                <span class="module-index">02</span>
+                <span class="module-copy"><strong>Sentinel</strong><small>Perimeter watch</small></span>
+                <span class="module-health">94</span>
+              </button>
+              <button type="button" class="module-button" data-module-id="orbital" aria-pressed="false">
+                <span class="module-index">03</span>
+                <span class="module-copy"><strong>Orbital</strong><small>Trajectory mesh</small></span>
+                <span class="module-health">87</span>
+              </button>
+              <button type="button" class="module-button" data-module-id="archive" aria-pressed="false">
+                <span class="module-index">04</span>
+                <span class="module-copy"><strong>Archive</strong><small>Memory lattice</small></span>
+                <span class="module-health">100</span>
+              </button>
+            </nav>
+            <div class="rail-footnote">
+              <span class="footnote-line"></span>
+              <span>Local bridge / no external uplink</span>
+            </div>
+          </aside>
+
+          <section id="stage-shell" class="stage-shell" aria-label="Procedural reactor stage">
+            <div class="stage-topline">
+              <span class="eyebrow">Primary aperture</span>
+              <span class="stage-live"><i></i><span data-stage-status>Live telemetry</span></span>
+            </div>
+            <div class="scene-window">
+              <div class="reactor-fallback" aria-hidden="true">
+                <span class="reactor-fallback__orbit reactor-fallback__orbit--outer"></span>
+                <span class="reactor-fallback__orbit reactor-fallback__orbit--middle"></span>
+                <span class="reactor-fallback__orbit reactor-fallback__orbit--inner"></span>
+                <span class="reactor-fallback__node reactor-fallback__node--one"></span>
+                <span class="reactor-fallback__node reactor-fallback__node--two"></span>
+                <span class="reactor-fallback__node reactor-fallback__node--three"></span>
+                <span class="reactor-fallback__node reactor-fallback__node--four"></span>
+                <span class="reactor-fallback__beam reactor-fallback__beam--one"></span>
+                <span class="reactor-fallback__beam reactor-fallback__beam--two"></span>
+                <span class="reactor-fallback__core"><i></i><b></b></span>
+              </div>
+              <canvas id="reactor-canvas" aria-hidden="true"></canvas>
+              <div class="scene-reticle" aria-hidden="true"><span></span><i></i></div>
+              <div class="scene-readout scene-readout--top" aria-hidden="true"><span>AZIMUTH</span><strong data-azimuth>+014.8°</strong></div>
+              <div class="scene-readout scene-readout--side" aria-hidden="true"><span>DEPTH</span><strong>04.2</strong></div>
+              <div class="scene-tag" aria-hidden="true"><span class="scene-tag-dot"></span><span>APERTURE / 07</span></div>
+              <div class="scene-corner scene-corner--tl" aria-hidden="true"></div>
+              <div class="scene-corner scene-corner--br" aria-hidden="true"></div>
+            </div>
+            <div class="stage-footer">
+              <div><span class="eyebrow">Coordinate lock</span><strong>ALPHA / NEXUS</strong></div>
+              <div class="stage-footer-center" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="stage-footer-right"><span class="eyebrow">Camera anchor</span><strong>STABLE / 0.18</strong></div>
+            </div>
+          </section>
+
+          <aside class="status-pane" aria-label="System status">
+            <div class="status-pane-heading"><span class="eyebrow">Mission surface</span><span class="status-code">J-07</span></div>
+            <div class="module-summary">
+              <div class="summary-kicker"><span data-module-index>01</span><span class="summary-rule"></span><span data-module-label>CORE / APERTURE</span></div>
+              <h2 data-module-title>Aperture control</h2>
+              <p data-module-summary>Primary energy lens stabilized across the command envelope.</p>
+            </div>
+            <div class="health-block">
+              <div class="health-label"><span>System integrity</span><strong data-health-value>98%</strong></div>
+              <div class="health-meter" aria-label="System integrity 98 percent"><span data-health-bar style="--health:98%"></span></div>
+              <div class="health-meta"><span>Nominal</span><span data-health-delta>+0.08%</span></div>
+            </div>
+            <div class="status-stack">
+              <div class="status-row"><span>Signal state</span><strong data-signal-state>Boot sequence</strong></div>
+              <div class="status-row"><span>Latency</span><strong>14.8 ms</strong></div>
+              <div class="status-row"><span>Thermal drift</span><strong>0.02°</strong></div>
+            </div>
+            <div class="status-actions">
+              <button type="button" class="primary-button" data-action="open-dialog" aria-controls="bridge-dialog" aria-expanded="false"><span>Open bridge</span><i aria-hidden="true">↗</i></button>
+              <button type="button" class="secondary-button" data-action="signal-check"><span>Run signal check</span><i aria-hidden="true">⌁</i></button>
+            </div>
+            <div class="status-pane-foot"><span class="footnote-line"></span><span>Command authority / local</span></div>
+          </aside>
+        </div>
+
+        <footer class="telemetry-dock" aria-label="Bridge telemetry">
+          <div class="telemetry-item telemetry-item--signal"><span class="eyebrow">Signal</span><div class="signal-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><strong data-signal-strength>-42 dB</strong></div>
+          <div class="telemetry-item"><span class="eyebrow">Uptime</span><strong>18:42:09:17</strong></div>
+          <div class="telemetry-item"><span class="eyebrow">Temperature</span><strong>36.4° <small>STABLE</small></strong></div>
+          <div class="telemetry-item telemetry-item--wide"><span class="eyebrow">Bridge note</span><strong data-telemetry-note>All systems holding at nominal aperture.</strong></div>
+          <div class="telemetry-item telemetry-item--index"><span class="eyebrow">Index</span><strong>07<span>/</span>24</strong></div>
+        </footer>
+
+        <dialog id="bridge-dialog" class="bridge-dialog" aria-labelledby="bridge-dialog-title" role="dialog">
+          <div class="dialog-shell">
+            <div class="dialog-topline"><span class="eyebrow">Bridge protocol / secure local surface</span><span class="dialog-status"><i></i>Ready</span></div>
+            <header class="dialog-header">
+              <div><span class="dialog-index" data-dialog-module-index>01</span><h2 id="bridge-dialog-title"><span data-dialog-module-title>Aperture control</span><small data-dialog-module-label>CORE / APERTURE</small></h2></div>
+              <button type="button" class="dialog-close" data-action="close-dialog" aria-label="Close bridge interface"><span aria-hidden="true">×</span></button>
+            </header>
+            <div class="dialog-grid">
+              <section class="dialog-primary">
+                <p class="dialog-lede" data-dialog-module-summary>Primary energy lens stabilized across the command envelope.</p>
+                <div class="command-stack" aria-label="Bridge commands">
+                  <button type="button" class="command-card" data-command="calibrate"><span class="command-number">01</span><span><strong>Calibrate aperture</strong><small>Recenter the lens on the active coordinate lock.</small></span><i aria-hidden="true">↗</i></button>
+                  <button type="button" class="command-card" data-command="trace"><span class="command-number">02</span><span><strong>Trace live signal</strong><small>Reveal the last 180 seconds of bridge movement.</small></span><i aria-hidden="true">↗</i></button>
+                  <button type="button" class="command-card" data-command="handoff"><span class="command-number">03</span><span><strong>Prepare handoff</strong><small>Package a clean local snapshot for the next operator.</small></span><i aria-hidden="true">↗</i></button>
+                </div>
+              </section>
+              <aside class="dialog-aside">
+                <div class="dialog-meter"><span class="eyebrow">Current integrity</span><strong data-dialog-health>98%</strong><div class="health-meter"><span data-dialog-health-bar style="--health:98%"></span></div><small>Return path stable</small></div>
+                <div class="dialog-signal"><span class="eyebrow">Live signal trace</span><div class="signal-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><strong data-dialog-signal>—42 dB / clean</strong></div>
+                <button type="button" class="secondary-button secondary-button--dialog" data-action="signal-check"><span>Cycle signal state</span><i aria-hidden="true">⌁</i></button>
+              </aside>
+            </div>
+            <footer class="dialog-footer"><span>JARVIS / local command authority</span><span>ESC to return <b>·</b> TAB to navigate</span></footer>
+          </div>
+        </dialog>
+      </main>
+    </div>
+    <noscript>JARVIS requires JavaScript to bring the command bridge online.</noscript>
+  </body>
+</html>
